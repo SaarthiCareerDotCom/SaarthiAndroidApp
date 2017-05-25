@@ -3,6 +3,7 @@ package com.saarthicareer.saarthicareer.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -127,6 +128,26 @@ public class FragmentDrawer extends Fragment {
             public void onClick(View v) {
                 Intent intent = newFacebookIntent(getContext().getPackageManager(),"https://www.facebook.com/saarthicareer/");
                 startActivity(intent,null);
+            }
+        });
+
+        //to visit twitter
+        ImageView twitter = (ImageView)layout.findViewById(R.id.twitter_button);
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = null;
+                try {
+                    // get the Twitter app if possible
+                    getActivity().getPackageManager().getPackageInfo("com.twitter.android", 0);
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=866400070203097088"));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                } catch (Exception e) {
+                    // no Twitter app, revert to browser
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/saarthicareer"));
+                }
+                startActivity(intent);
+
             }
         });
 

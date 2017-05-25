@@ -9,6 +9,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.saarthicareer.saarthicareer.R;
+import com.saarthicareer.saarthicareer.classes.TypefaceSpan;
 import com.saarthicareer.saarthicareer.fragment.AboutFragment;
 import com.saarthicareer.saarthicareer.fragment.FeedbackFragment;
 import com.saarthicareer.saarthicareer.fragment.FragmentDrawer;
@@ -80,7 +83,7 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
             fragmentTransaction.replace(R.id.container_body, fragment , "settings");
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-            getSupportActionBar().setTitle("Settings");
+            updateTitleAndDrawer(fragment);
             return true;
         }
 
@@ -136,25 +139,41 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
                 ft.addToBackStack(backStateName);
                 ft.commit();
             }
+
             // set the toolbar title
-            getSupportActionBar().setTitle(title);
+            SpannableString s = new SpannableString(title);
+            s.setSpan(new TypefaceSpan(this, "helvetica_neue_thin.ttf"), 0, s.length(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            getSupportActionBar().setTitle(s);
         }
     }
 
     private void updateTitleAndDrawer (Fragment fragment){
         String fragClassName = fragment.getClass().getName();
-
+        SpannableString s;
         if (fragClassName.equals(HomeFragment.class.getName())){
-            getSupportActionBar().setTitle(getString(R.string.app_name));
+            s = new SpannableString("Saarthi Career");
+            s.setSpan(new TypefaceSpan(this, "helvetica_neue_thin.ttf"), 0, s.length(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            getSupportActionBar().setTitle(s);
         }
         else if (fragClassName.equals(FeedbackFragment.class.getName())){
-            getSupportActionBar().setTitle(getString(R.string.nav_item_feedback));
+            s = new SpannableString("Feedback");
+            s.setSpan(new TypefaceSpan(this, "helvetica_neue_thin.ttf"), 0, s.length(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            getSupportActionBar().setTitle(s);
         }
         else if (fragClassName.equals(AboutFragment.class.getName())){
-            getSupportActionBar().setTitle(getString(R.string.nav_item_about));
+            s = new SpannableString("About");
+            s.setSpan(new TypefaceSpan(this, "helvetica_neue_thin.ttf"), 0, s.length(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            getSupportActionBar().setTitle(s);
         }
         else if (fragClassName.equals(SettingsFragment.class.getName())){
-            getSupportActionBar().setTitle(getString(R.string.nav_item_settings));
+            s = new SpannableString("Settings");
+            s.setSpan(new TypefaceSpan(this, "helvetica_neue_thin.ttf"), 0, s.length(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            getSupportActionBar().setTitle(s);
         }
     }
 
