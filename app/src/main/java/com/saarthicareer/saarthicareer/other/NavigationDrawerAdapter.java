@@ -1,6 +1,7 @@
 package com.saarthicareer.saarthicareer.other;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,9 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.nav_drawer_row, parent, false);
+        TextView app_name = (TextView)view.findViewById(R.id.title);
+        Typeface type = Typeface.createFromAsset(context.getAssets(),"fonts/helvetica_neue_thin.ttf");
+        app_name.setTypeface(type);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }

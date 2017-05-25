@@ -1,6 +1,11 @@
 package com.saarthicareer.saarthicareer.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.saarthicareer.saarthicareer.R;
 import com.saarthicareer.saarthicareer.other.NavDrawerItem;
@@ -82,7 +89,61 @@ public class FragmentDrawer extends Fragment {
             }
         }));
 
+        TextView user_name = (TextView)layout.findViewById(R.id.userName);
+        TextView follow_us = (TextView)layout.findViewById(R.id.follow_us);
+        TextView contact_us = (TextView)layout.findViewById(R.id.contact_us);
+        Typeface type = Typeface.createFromAsset(getActivity().getAssets(),"fonts/helvetica_neue_thin.ttf");
+        user_name.setTypeface(type);
+        follow_us.setTypeface(type);
+        contact_us.setTypeface(type);
+
+        //to call saarthi
+        ImageView call = (ImageView)layout.findViewById(R.id.call_button);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:+91-8971855000"));
+                startActivity(intent);
+            }
+        });
+
+        //to email saarthi
+        ImageView email = (ImageView)layout.findViewById(R.id.email_button);
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"info@saarthicareer.com"});
+                startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            }
+        });
+
+        //to visit fb page
+        ImageView facebook = (ImageView)layout.findViewById(R.id.facebook_button);
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = newFacebookIntent(getContext().getPackageManager(),"https://www.facebook.com/saarthicareer/");
+                startActivity(intent,null);
+            }
+        });
+
         return layout;
+    }
+
+    public static Intent newFacebookIntent(PackageManager pm, String url) {
+        Uri uri = Uri.parse(url);
+        try {
+            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
+            if (applicationInfo.enabled) {
+                // http://stackoverflow.com/a/24547437/1048340
+                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return new Intent(Intent.ACTION_VIEW, uri);
     }
 
 

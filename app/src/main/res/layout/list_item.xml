@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:padding="10dip"
     android:textSize="18sp"
-    android:text="DSATM"
+    android:fontFamily="monospace"
     android:textColor="@color/textColorPrimary"
     android:textStyle="bold"
     android:background="#444444">

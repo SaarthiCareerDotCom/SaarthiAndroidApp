@@ -3,6 +3,7 @@ package com.saarthicareer.saarthicareer.activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,11 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Button buttonLogin = (Button) findViewById(R.id.btn_login);
+        TextView app_name = (TextView)findViewById(R.id.name);
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/helvetica_neue_thin.ttf");
+        app_name.setTypeface(type);
+
+        final TextView buttonLogin = (TextView) findViewById(R.id.btn_login);
         final EditText editTextEmail = (EditText) findViewById(R.id.input_email);
         final EditText editTextPassword = (EditText) findViewById(R.id.input_password);
         final TextView forgotPassword = (TextView) findViewById(R.id.forgotPassword);
