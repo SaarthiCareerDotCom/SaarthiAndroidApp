@@ -1,0 +1,175 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/nav_header_container"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/drawer">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/circle"
+            android:scaleType="fitCenter"
+            android:layout_margin="30dp"/>
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignStart="@+id/image"
+            android:layout_alignTop="@+id/image"
+            android:background="@drawable/username"
+            android:backgroundTint="#ffffff"
+            android:layout_margin="7.5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userName"
+            android:textSize="35sp"
+            android:layout_margin="30dp"
+            android:text="Vikas V Shastry"
+            android:textColor="#ffffff"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/nav_header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="30dp">
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/home"
+            android:backgroundTint="#888888"
+            android:layout_marginTop="30dp"/>
+
+        <ImageView
+            android:id="@+id/feedback"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/feedback"
+            android:backgroundTint="#888888"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="1dp"
+            android:layout_below="@+id/home"/>
+
+        <ImageView
+            android:id="@+id/about"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/about"
+            android:backgroundTint="#888888"
+            android:layout_marginTop="22dp"
+            android:layout_below="@+id/feedback"/>
+
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/settings"
+            android:backgroundTint="#888888"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/about"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/drawerList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_header_container"
+        android:layout_marginTop="15dp" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#444444"
+        android:alpha="0.2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"/>
+
+    <TextView
+        android:id="@+id/follow_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/line"
+        android:layout_alignStart="@+id/line"
+        android:paddingBottom="10dp"
+        android:text="Follow us on"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:id="@+id/facebook_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/facebook"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_alignStart="@+id/line"/>
+
+    <ImageView
+        android:id="@+id/twitter_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:padding="5dp"
+        android:background="@drawable/twitter"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_toRightOf="@+id/facebook_button"
+        android:layout_marginStart="40dp"/>
+
+    <TextView
+        android:id="@+id/contact_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact us "
+        android:layout_above="@+id/line"
+        android:layout_alignEnd="@+id/line"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:id="@+id/email_button"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:background="@drawable/gmail"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_alignEnd="@+id/line"/>
+
+    <ImageView
+        android:id="@+id/call_button"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:padding="5dp"
+        android:background="@drawable/phone"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/email_button"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="12dp"/>
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="0.5dp"
+        android:layout_height="20dp"
+        android:background="#444444"
+        android:alpha="0.2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
